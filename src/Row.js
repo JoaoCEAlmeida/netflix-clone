@@ -54,7 +54,11 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
           />
         ))}
       </div>
-      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+      {trailerUrl && (
+        <div className="row__video">
+          <YouTube videoId={trailerUrl} opts={opts} />
+        </div>
+      )}
     </div>
   );
 };
