@@ -18,11 +18,11 @@ const Nav = () => {
         src="https://download.logo.wine/logo/Netflix/Netflix-Logo.wine.png"
         alt="Netflix Logo"
       />
-      <img
+      {/*<img
         className="nav__avatar"
         src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/366be133850498.56ba69ac36858.png"
         alt="Netflix Avatar"
-      />
+      />*/}
     </div>
   );
 };
