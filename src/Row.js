@@ -8,7 +8,7 @@ import movieTrailer from "movie-trailer";
 const Row = ({ title, fetchUrl, isLargeRow }) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState(null);
-
+  console.log("MOVIES", movies);
   useEffect(() => {
     const fetchData = async () => {
       const request = await axios.get(fetchUrl);
@@ -42,17 +42,20 @@ const Row = ({ title, fetchUrl, isLargeRow }) => {
     <div className="row">
       <h2>{title}</h2>
       <div className="row__posters">
-        {movies.map((movie) => (
-          <img
-            key={movie.id}
-            onClick={() => handleClick(movie)}
-            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-            src={`${imageBaseUrl}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
-          />
-        ))}
+        {movies.map((movie) => {
+          const poster = isLargeRow
+            ? movie.poster_path || movie.backdrop_path
+            : movie.backdrop_path || movie.poster_path;
+          return (
+            <img
+              key={movie.id}
+              onClick={() => handleClick(movie)}
+              className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+              src={`${imageBaseUrl}${poster}`}
+              alt={movie.name}
+            />
+          );
+        })}
       </div>
       {trailerUrl && (
         <div className="row__video">
