@@ -8,7 +8,7 @@ import movieTrailer from "movie-trailer";
 const Row = ({ title, fetchUrl, isLargeRow }) => {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState(null);
-  console.log("MOVIES", movies);
+
   useEffect(() => {
     const fetchData = async () => {
       const request = await axios.get(fetchUrl);
